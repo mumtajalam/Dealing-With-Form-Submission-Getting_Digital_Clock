@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "../styles/App.css";
 const App = () => {
-  let date = new Date().toLocaleTimeString();
-
+  let date = new Date().toLocaleDateString();
   let time = new Date().toLocaleTimeString();
+  const [tyme, update] = useState(time);
 
-  const [ctime, setCtime] = useState(time);
-
-  const UpdateTime = () => {
+  const runningTime = () => {
     time = new Date().toLocaleTimeString();
-    setCtime(time);
+    update(time);
   };
-
-  setInterval(UpdateTime, 1000);
+  setInterval(runningTime, 1000);
 
   useEffect(() => {
-    clearInterval(UpdateTime);
+    clearInterval(runningTime);
   });
 
   return (
     <div id="main">
-      <div className="date-time">{date + " ," + ctime}</div>
+      <div className="date-time">{date + " ," + tyme}</div>
     </div>
   );
 };
