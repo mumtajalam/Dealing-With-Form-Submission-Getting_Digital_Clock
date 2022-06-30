@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/App.css";
 const App = () => {
+  let date = new Date().toLocaleTimeString();
+
   let time = new Date().toLocaleTimeString();
 
   const [ctime, setCtime] = useState(time);
@@ -11,11 +13,14 @@ const App = () => {
   };
 
   setInterval(UpdateTime, 1000);
+
+  useEffect(() => {
+    clearInterval(UpdateTime);
+  });
+
   return (
     <div id="main">
-      <div className="date-time">
-        <h1>{ctime}</h1>
-      </div>
+      <div className="date-time">{date + " ," + ctime}</div>
     </div>
   );
 };
