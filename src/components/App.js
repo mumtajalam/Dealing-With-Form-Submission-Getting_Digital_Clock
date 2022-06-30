@@ -1,13 +1,23 @@
-import React from 'react'
-import '../styles/App.css';
+import React, { useState } from "react";
+import "../styles/App.css";
 const App = () => {
+  let time = new Date().toLocaleTimeString();
 
+  const [ctime, setCtime] = useState(time);
+
+  const UpdateTime = () => {
+    time = new Date().toLocaleTimeString();
+    setCtime(time);
+  };
+
+  setInterval(UpdateTime, 1000);
   return (
     <div id="main">
-      <div className="date-time"></div>
+      <div className="date-time">
+        <h1>{ctime}</h1>
+      </div>
     </div>
-  )
-}
-
+  );
+};
 
 export default App;
