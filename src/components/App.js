@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/App.css";
+
 const App = () => {
   let date = new Date().toLocaleDateString();
   let time = new Date().toLocaleTimeString();
@@ -16,9 +17,11 @@ const App = () => {
   });
 
   return (
-    <div id="main">
-      <div className="date-time">{date + " ," + tyme}</div>
-    </div>
+    <>
+      <div className="main">
+        <div className="date-time">{date + ", " + tyme}</div>
+      </div>
+    </>
   );
 };
 
